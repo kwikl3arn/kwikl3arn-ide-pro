@@ -1,2 +1,2 @@
 # kwikl3arn-ide-pro
-ide like w3schools(php,mysql,pgsql,jquery,html,css,javascript)
+online ide like w3schools(supports php,mysql,pgsql,jquery,html,css,javascript)

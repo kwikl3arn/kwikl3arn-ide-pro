@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		
+		<!-- Mobile viewport optimized -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<!-- Title -->
+		<title>Database-pgsql</title>
+		
+		<!-- CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/codemirror.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/addon/dialog/dialog.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/theme/monokai.min.css">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/addon/hint/show-hint.css">
+		<link type="text/css" rel="stylesheet" href="css/style.css"/>
+	</head>
+	<body>	
+		<ul class="header">
+			<li><a href="index.html">Frontend</a></li>
+			<li><a href="backend.html">PHP</a></li>
+			<li><a  href="database.html">MYSQL</a></li>
+			<li><a class="active" href="pgsql.html">PGSQL</a></li>
+		</ul>		
+		<div id="konten">
+			<div class="per-dua code-sql">
+				<form method="post" action="eksekusi.php" target="output">
+					<span class="title">PGSQL</span>
+					<input type="submit" name="preview" class="btn-preview" value="RUN"/>
+					<input type="text" name="host" class="db-input" placeholder="Host *" value="localhost" required/>
+					<input type="text" name="username" class="db-input" placeholder="Username *" value="postgres" required/>
+					<input type="text" name="password" class="db-input" placeholder="Password *" value="post123"/>
+					<input type="text" name="dbname" class="db-input" placeholder="DB name" value="akshya_nursery"/>
+					<textarea id="code" name="query" >--show tables in database
+/*SELECT
+    table_name
+FROM
+    information_schema.tables
+WHERE
+    table_type = 'BASE TABLE'
+AND
+    table_schema NOT IN ('pg_catalog', 'information_schema');*/
+	--show list of databases
+	/*SELECT
+ d.datname as "Name",
+ u.usename as "Owner",
+ pg_encoding_to_char(d.encoding) as "Encoding"
+FROM 
+ pg_database d LEFT JOIN pg_user u ON d.datdba = u.usesysid
+ORDER BY 1;*/
+	</textarea>
+				</form>
+			</div><div class="per-dua"><iframe name="output" class="cmd" src="eksekusi.php"></iframe></div>			
+		</div>
+		
+		<!-- Javascript 
+		<script type="text/javascript" src="js/jquery-2.2.0.min.js"></script>-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+			<script type="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/codemirror.js"></script> 
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/codemirror.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/addon/hint/show-hint.js"></script>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/addon/hint/css-hint.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/addon/hint/javascript-hint.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/addon/hint/html-hint.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/addon/hint/xml-hint.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/addon/hint/sql-hint.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/mode/xml/xml.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/mode/javascript/javascript.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/mode/css/css.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/mode/clike/clike.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/mode/php/php.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/mode/htmlmixed/htmlmixed.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/mode/sql/sql.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/addon/dialog/dialog.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/addon/search/searchcursor.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/addon/search/search.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/addon/display/placeholder.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/addon/edit/matchbrackets.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/addon/edit/closetag.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/addon/selection/active-line.js"></script>
+		<script>					 
+			var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
+				mode: 'text/x-pgsql',
+				lineWrapping: true,
+				theme: "monokai",
+				lineNumbers: true,
+				matchBrackets: true,
+				lineWiseCopyCut: true,
+				autoCloseTags:true,
+				extraKeys: {"Ctrl-Space": "autocomplete"}
+			});
+		</script>
+		
+	</body>
+</html>
